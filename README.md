@@ -107,7 +107,7 @@ var idx = gindexOfFalsy( [ x ] );
 
 ## Notes
 
--   The function treats `NaN` values a falsy.
+-   The function treats `NaN` values as falsy.
 
 </section>
 
