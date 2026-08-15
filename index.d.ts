@@ -1,4 +1,4 @@
-/**
+/*
 * @license Apache-2.0
 *
 * Copyright (c) 2026 The Stdlib Authors.
@@ -16,28 +16,35 @@
 * limitations under the License.
 */
 
-'use strict';
+// TypeScript Version: 4.1
+
+/// <reference types="https://cdn.jsdelivr.net/gh/stdlib-js/types@esm/index.d.ts"/>
+
+import { typedndarray } from '@stdlib/types/ndarray';
 
 /**
-* Return the index of the first falsy element in a one-dimensional ndarray.
+* Returns the index of the first falsy element in a one-dimensional ndarray.
 *
-* @module @stdlib/blas-ext-base-ndarray-gindex-of-falsy
+* ## Notes
+*
+* -   The function expects the following ndarrays:
+*
+*     -   a one-dimensional input ndarray.
+*
+* @param arrays - array-like object containing ndarrays
+* @returns index
 *
 * @example
 * var vector = require( '@stdlib/ndarray-vector-ctor' );
-* var gindexOfFalsy = require( '@stdlib/blas-ext-base-ndarray-gindex-of-falsy' );
 *
 * var x = vector( [ 1.0, 3.0, 0.0, 2.0 ], 'generic' );
 *
 * var v = gindexOfFalsy( [ x ] );
 * // returns 2
 */
-
-// MODULES //
-
-var main = require( './main.js' );
+declare function gindexOfFalsy( arrays: [ typedndarray<unknown> ] ): number;
 
 
 // EXPORTS //
 
-module.exports = main;
+export = gindexOfFalsy;
