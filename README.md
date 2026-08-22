@@ -75,25 +75,38 @@ Returns the index of the first falsy element in a one-dimensional ndarray.
 
 ```javascript
 var vector = require( '@stdlib/ndarray-vector-ctor' );
+var scalar2ndarray = require( '@stdlib/ndarray-from-scalar' );
 
 var x = vector( [ 1.0, 3.0, 0.0, 2.0 ], 'generic' );
 
-var idx = gindexOfFalsy( [ x ] );
+var fromIndex = scalar2ndarray( 0, {
+    'dtype': 'generic'
+});
+
+var idx = gindexOfFalsy( [ x, fromIndex ] );
 // returns 2
 ```
 
 The function has the following parameters:
 
--   **arrays**: array-like object containing a one-dimensional input ndarray.
+-   **arrays**: array-like object containing the following ndarrays:
+
+    -   a one-dimensional input ndarray.
+    -   a zero-dimensional ndarray containing the index from which to begin searching.
 
 If the function is unable to find a falsy element, the function returns `-1`.
 
 ```javascript
 var vector = require( '@stdlib/ndarray-vector-ctor' );
+var scalar2ndarray = require( '@stdlib/ndarray-from-scalar' );
 
 var x = vector( [ 1.0, 2.0, 3.0, 4.0 ], 'generic' );
 
-var idx = gindexOfFalsy( [ x ] );
+var fromIndex = scalar2ndarray( 0, {
+    'dtype': 'generic'
+});
+
+var idx = gindexOfFalsy( [ x, fromIndex ] );
 // returns -1
 ```
 
@@ -106,6 +119,7 @@ var idx = gindexOfFalsy( [ x ] );
 ## Notes
 
 -   The function treats `NaN` values as falsy.
+-   If a specified starting search index is negative, the function resolves the starting search index by counting backward from the last element (where `-1` refers to the last element).
 
 </section>
 
@@ -119,6 +133,7 @@ var idx = gindexOfFalsy( [ x ] );
 
 ```javascript
 var discreteUniform = require( '@stdlib/random-discrete-uniform' );
+var scalar2ndarray = require( '@stdlib/ndarray-from-scalar' );
 var ndarray2array = require( '@stdlib/ndarray-to-array' );
 var gindexOfFalsy = require( '@stdlib/blas-ext-base-ndarray-gindex-of-falsy' );
 
@@ -129,7 +144,11 @@ var opts = {
 var x = discreteUniform( [ 10 ], 0, 5, opts );
 console.log( ndarray2array( x ) );
 
-var idx = gindexOfFalsy( [ x ] );
+var fromIndex = scalar2ndarray( 0, {
+    'dtype': 'generic'
+});
+
+var idx = gindexOfFalsy( [ x, fromIndex ] );
 console.log( idx );
 ```
 
@@ -163,6 +182,11 @@ For more information on the project, filing bug reports and feature requests, an
 [![Chat][chat-image]][chat-url]
 
 ---
+
+## License
+
+See [LICENSE][stdlib-license].
+
 
 ## Copyright
 
@@ -209,6 +233,8 @@ Copyright &copy; 2016-2026. The Stdlib [Authors][stdlib-authors].
 [esm-url]: https://github.com/stdlib-js/blas-ext-base-ndarray-gindex-of-falsy/tree/esm
 [esm-readme]: https://github.com/stdlib-js/blas-ext-base-ndarray-gindex-of-falsy/blob/esm/README.md
 [branches-url]: https://github.com/stdlib-js/blas-ext-base-ndarray-gindex-of-falsy/blob/main/branches.md
+
+[stdlib-license]: https://raw.githubusercontent.com/stdlib-js/blas-ext-base-ndarray-gindex-of-falsy/main/LICENSE
 
 </section>
 
